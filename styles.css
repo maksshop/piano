@@ -162,7 +162,7 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 720px) {
   .section { padding: 48px 0; }
-  .site-nav { position: absolute; inset: 72px 0 auto 0; background: #fff; border-bottom: 1px solid var(--border); padding: 10px 0; display: none; }
+  .site-nav { position: fixed; left: 0; right: 0; top: 72px; background: #fff; border-bottom: 1px solid var(--border); padding: 10px 0; display: none; max-height: calc(100dvh - 72px); overflow-y: auto; }
   .site-nav.open { display: block; }
   .site-nav ul { flex-direction: column; align-items: flex-start; gap: 0; }
   .site-nav li { width: 100%; }
