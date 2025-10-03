@@ -11,6 +11,7 @@
   --bg-alt: #faf7f7;
   --border: #eee;
   --shadow: 0 10px 30px rgba(0,0,0,.08);
+  --header-height: 72px;
 }
 
 /* Base */
@@ -56,7 +57,7 @@ img { max-width: 100%; display: block; }
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
-  min-height: 72px;
+  min-height: var(--header-height);
 }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; font-weight: 700; }
 .brand-mark { font-size: 22px; }
@@ -162,7 +163,19 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 720px) {
   .section { padding: 48px 0; }
-  .site-nav { position: fixed; left: 0; right: 0; top: 72px; background: #fff; border-bottom: 1px solid var(--border); padding: 10px 0; display: none; max-height: calc(100dvh - 72px); overflow-y: auto; }
+  .site-nav { 
+    position: fixed; 
+    left: 0; 
+    right: 0; 
+    top: var(--header-height); 
+    background: #fff; 
+    border-bottom: 1px solid var(--border); 
+    padding: 10px 0; 
+    display: none; 
+    max-height: calc(100dvh - var(--header-height)); 
+    overflow-y: auto; 
+    z-index: 40;
+  }
   .site-nav.open { display: block; }
   .site-nav ul { flex-direction: column; align-items: flex-start; gap: 0; }
   .site-nav li { width: 100%; }
