@@ -2,20 +2,12 @@
 <html lang="bg">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Професионални уроци по пиано с опитен преподавател. Научете класическо, джаз и съвременно пиано. Запазете урок още днес!">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="theme-color" content="#DC2626">
     <title>Учител по пиано — Професионални уроци по пиано</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Skip Navigation -->
-    <a href="#main" class="skip-link">Към основното съдържание</a>
-
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -26,20 +18,20 @@
                 <ul class="nav__menu" id="navMenu">
                     <li class="nav__item"><a href="#home" class="nav__link">Начало</a></li>
                     <li class="nav__item"><a href="#about" class="nav__link">За мен</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link">Контакт</a></li>
+                    <li class="nav__item"><a href="#lessons" class="nav__link">Уроци</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Контакти</a></li>
                 </ul>
-                <button class="nav__toggle" id="navToggle" aria-label="Отвори навигационното меню" aria-expanded="false">
+                <button class="nav__toggle" id="navToggle" aria-label="Превключване на навигационно меню">
                     <span class="nav__toggle-bar"></span>
                     <span class="nav__toggle-bar"></span>
                     <span class="nav__toggle-bar"></span>
                 </button>
             </nav>
         </div>
-        <div class="nav__overlay" id="navOverlay"></div>
     </header>
 
     <!-- Main Content -->
-    <main id="main">
+    <main>
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="container">
@@ -57,10 +49,10 @@
                 <div class="about__grid">
                     <div class="about__content">
                         <h2 class="about__title">За вашия учител по пиано</h2>
-                        <p class="about__text">С над 10 години преподавателски опит, аз съм вълнуван да споделя радостта от музиката с ученици от всички възрасти и нива. Моята преподавателска философия се фокусира върху изграждането на силни основи, като същевременно развива уникалното музикално изразяване на всеки ученик.</p>
+                        <p class="about__text">С над 10 години опит в преподаването, аз съм страстен за споделянето на радостта от музиката с ученици от всички възрасти и нива. Моята философия на преподаване се фокусира върху изграждането на солидни основи, като същевременно подхранва уникалното музикално изражение на всеки ученик.</p>
                         <p class="about__text">Специализирам в класическа музика, джаз, съвременна музика и музикална теория, осигурявайки цялостно музикално образование, което се адаптира към вашите лични интереси и цели.</p>
                         <div class="about__specialties">
-                            <h3 class="about__specialties-title">Специализации:</h3>
+                            <h3 class="about__specialties-title">Специалности:</h3>
                             <ul class="about__specialties-list">
                                 <li>Класическо пиано</li>
                                 <li>Джаз и импровизация</li>
@@ -78,51 +70,126 @@
             </div>
         </section>
 
+        <!-- Lessons Section -->
+        <section id="lessons" class="lessons">
+            <div class="container">
+                <div class="lessons__header">
+                    <h2 class="lessons__title">Уроци по пиано</h2>
+                    <p class="lessons__subtitle">Изберете идеалния тип урок за вашето ниво и цели</p>
+                </div>
+                <div class="lessons__grid">
+                    <div class="card lessons__card">
+                        <div class="card__body">
+                            <h3 class="lessons__card-title">Уроци за начинаещи</h3>
+                            <p class="lessons__card-description">Перфектни за ученици, които започват своето музикално пътешествие</p>
+                            <ul class="lessons__features">
+                                <li>Основна техника</li>
+                                <li>Четене на ноти</li>
+                                <li>Прости песни</li>
+                            </ul>
+                            <p class="lessons__pricing">Свържете се за цени</p>
+                        </div>
+                    </div>
+                    <div class="card lessons__card lessons__card--featured">
+                        <div class="card__body">
+                            <h3 class="lessons__card-title">Уроци за напреднали</h3>
+                            <p class="lessons__card-description">За ученици, готови да развият уменията си</p>
+                            <ul class="lessons__features">
+                                <li>Усъвършенствана техника</li>
+                                <li>Музикална теория</li>
+                                <li>Класически произведения</li>
+                            </ul>
+                            <p class="lessons__pricing">Свържете се за цени</p>
+                        </div>
+                    </div>
+                    <div class="card lessons__card">
+                        <div class="card__body">
+                            <h3 class="lessons__card-title">Професионални уроци</h3>
+                            <p class="lessons__card-description">Професионално обучение и подготовка за изпълнения</p>
+                            <ul class="lessons__features">
+                                <li>Подготовка за изпълнения</li>
+                                <li>Усъвършенстван репертоар</li>
+                                <li>Подготовка за конкурси</li>
+                            </ul>
+                            <p class="lessons__pricing">Свържете се за цени</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lessons__formats">
+                    <h3 class="lessons__formats-title">Налични формати</h3>
+                    <div class="lessons__formats-grid">
+                        <div class="lessons__format">
+                            <h4>Присъствени уроци</h4>
+                            <p>Традиционно индивидуално обучение в студиото</p>
+                        </div>
+                        <div class="lessons__format">
+                            <h4>Онлайн уроци</h4>
+                            <p>Виртуални уроци чрез видео обаждане от дома</p>
+                        </div>
+                        <div class="lessons__format">
+                            <h4>Групови сесии</h4>
+                            <p>Уроци в малки групи за ансамблово свирене</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="testimonials__title">Какво казват учениците</h2>
+                <div class="testimonials__grid">
+                    <blockquote class="card testimonial">
+                        <div class="card__body">
+                            <p class="testimonial__text">Невероятен учител! Дъщеря ми се подобри толкова много само за няколко месеца.</p>
+                            <cite class="testimonial__author">Сара М., родител</cite>
+                        </div>
+                    </blockquote>
+                    <blockquote class="card testimonial">
+                        <div class="card__body">
+                            <p class="testimonial__text">Професионален, търпелив и невероятно компетентен. Силно препоръчвам!</p>
+                            <cite class="testimonial__author">Йоан Д., възрастен ученик</cite>
+                        </div>
+                    </blockquote>
+                    <blockquote class="card testimonial">
+                        <div class="card__body">
+                            <p class="testimonial__text">Най-добрият учител по пиано в града. Синът ми обожава уроците си!</p>
+                            <cite class="testimonial__author">Мария Л., родител</cite>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="contact">
             <div class="container">
-                <div class="contact__grid">
+                <div class="contact__content">
+                    <h2 class="contact__title">Свържете се</h2>
+                    <p class="contact__subtitle">Готови ли сте да започнете своето музикално пътешествие? Свържете се с мен, за да запазите първия си урок!</p>
                     <div class="contact__info">
-                        <h2 class="contact__title">Свържете се с мен</h2>
-                        <p class="contact__subtitle">Готови ли сте да започнете музикалното си пътешествие? Свържете се с мен, за да насрочите първия си урок!</p>
-                        <div class="contact__details">
-                            <div class="contact__detail">
+                        <div class="contact__detail">
+                            <div class="contact__icon">📧</div>
+                            <div class="contact__text">
                                 <h3>Имейл</h3>
-                                <p>contact@pianoteacher.com</p>
+                                <p><a href="mailto:contact@pianoteacher.com">contact@pianoteacher.com</a></p>
                             </div>
-                            <div class="contact__detail">
+                        </div>
+                        <div class="contact__detail">
+                            <div class="contact__icon">📞</div>
+                            <div class="contact__text">
                                 <h3>Телефон</h3>
-                                <p>(555) 123-4567</p>
+                                <p><a href="tel:+15551234567">(555) 123-4567</a></p>
                             </div>
-                            <div class="contact__detail">
-                                <h3>Местоположение</h3>
+                        </div>
+                        <div class="contact__detail">
+                            <div class="contact__icon">📍</div>
+                            <div class="contact__text">
+                                <h3>Локация</h3>
                                 <p>Downtown Music Studio</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="contact__form">
-                        <form class="form" id="contactForm" novalidate>
-                            <div class="form-group">
-                                <label for="name" class="form-label">Име *</label>
-                                <input type="text" id="name" name="name" class="form-control" required>
-                                <div class="form-error" id="nameError"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="form-label">Имейл *</label>
-                                <input type="email" id="email" name="email" class="form-control" required>
-                                <div class="form-error" id="emailError"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="form-label">Телефон</label>
-                                <input type="tel" id="phone" name="phone" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="message" class="form-label">Съобщение *</label>
-                                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                                <div class="form-error" id="messageError"></div>
-                            </div>
-                            <button type="submit" class="btn btn--primary btn--full-width">Изпращане</button>
-                        </form>
                     </div>
                 </div>
             </div>
