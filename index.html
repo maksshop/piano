@@ -1,211 +1,209 @@
 <!DOCTYPE html>
 <html lang="bg">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Професионални уроци по пиано с опитен преподавател. Научете класическо, джаз и съвременно пиано. Запазете урок още днес!">
-    <title>Учител по пиано — Професионални уроци по пиано</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <div class="nav__brand">
-                    <h1 class="nav__title">Учител по пиано</h1>
-                </div>
-                <ul class="nav__menu" id="navMenu">
-                    <li class="nav__item"><a href="#home" class="nav__link">Начало</a></li>
-                    <li class="nav__item"><a href="#about" class="nav__link">За мен</a></li>
-                    <li class="nav__item"><a href="#lessons" class="nav__link">Уроци</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link">Контакти</a></li>
-                </ul>
-                <button class="nav__toggle" id="navToggle" aria-label="Превключване на навигационно меню">
-                    <span class="nav__toggle-bar"></span>
-                    <span class="nav__toggle-bar"></span>
-                    <span class="nav__toggle-bar"></span>
-                </button>
-            </nav>
-        </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Уроци по пиано с Алина | Частен учител по пиано</title>
+    <meta name="description" content="Модерни, персонализирани уроци по пиано за всички възрасти с Алина – професионален учител. Научете класика, джаз и поп с подкрепящ подход." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎹</text></svg>">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Към съдържанието</a>
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="#home" aria-label="Начало – уроци по пиано">
+          <span class="brand-mark" aria-hidden="true">🎹</span>
+          <span class="brand-text">Алина – Пиано студио</span>
+        </a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Отваряне/затваряне на навигацията</span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" role="navigation">
+          <ul>
+            <li><a href="#about">За мен</a></li>
+            <li><a href="#lessons">Уроци</a></li>
+            <li><a href="#testimonials">Отзиви</a></li>
+            <li><a href="#faq">Въпроси</a></li>
+            <li><a class="btn btn--ghost" href="#contact">Контакт</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="container">
-                <div class="hero__content">
-                    <h1 class="hero__title">Научете пиано с професионален учител</h1>
-                    <p class="hero__subtitle">Превърнете музикалните си мечти в реалност с персонализирани уроци по пиано, адаптирани към вашето ниво и цели</p>
-                    <a href="#contact" class="btn btn--primary btn--lg hero__cta">Запазете урок</a>
-                </div>
+    <main id="main">
+      <section id="home" class="section hero" aria-label="Добре дошли">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1 class="display">Открий своя глас на пианото.</h1>
+            <p class="lead">Персонализирани уроци по пиано с Алина — търпелив, професионален учител, който помага на жени и деца да се чувстват уверени на клавишите.</p>
+            <div class="cta-group">
+              <a href="#contact" class="btn btn--primary">Запази безплатна среща</a>
+              <a href="#lessons" class="btn btn--link">Виж уроците</a>
             </div>
-        </section>
+            <ul class="hero-highlights" aria-label="Акценти">
+              <li>От начинаещ до напреднал</li>
+              <li>Класика, поп и джаз</li>
+              <li>На място или онлайн</li>
+            </ul>
+          </div>
+          <div class="hero-media" aria-hidden="true">
+            <div class="hero-card">
+              <div class="keys-pattern" aria-hidden="true"></div>
+              <img src="piano.jpg" alt="Пиано – близък кадър на клавиши">
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="about__grid">
-                    <div class="about__content">
-                        <h2 class="about__title">За вашия учител по пиано</h2>
-                        <p class="about__text">С над 10 години опит в преподаването, аз съм страстен за споделянето на радостта от музиката с ученици от всички възрасти и нива. Моята философия на преподаване се фокусира върху изграждането на солидни основи, като същевременно подхранва уникалното музикално изражение на всеки ученик.</p>
-                        <p class="about__text">Специализирам в класическа музика, джаз, съвременна музика и музикална теория, осигурявайки цялостно музикално образование, което се адаптира към вашите лични интереси и цели.</p>
-                        <div class="about__specialties">
-                            <h3 class="about__specialties-title">Специалности:</h3>
-                            <ul class="about__specialties-list">
-                                <li>Класическо пиано</li>
-                                <li>Джаз и импровизация</li>
-                                <li>Съвременна музика</li>
-                                <li>Музикална теория</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="about__image">
-                        <div class="about__placeholder">
-                            <p>Снимка на учителя</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <section id="about" class="section section--alt" aria-label="За Алина">
+        <div class="container two-col">
+          <div>
+            <h2>Запознай се с Алина</h2>
+            <p>Здравей, аз съм Алина — класически обучен пианист и отдаден преподавател с над 10 години опит. Помагам на учениците да изградят стабилна техника, като същевременно развиват креативност, любопитство и радост.</p>
+            <p>Моето студио е приветливо пространство, особено за жени и млади ученици. Уроците са структурирани, подкрепящи и съобразени с твоите цели — било то да изсвириш любимата си песен или да се подготвиш за изпити.</p>
+          </div>
+          <ul class="feature-list" aria-label="Квалификации">
+            <li>
+              <span class="feature-icon" aria-hidden="true">✓</span>
+              Бакалавър по пиано изпълнение
+            </li>
+            <li>
+              <span class="feature-icon" aria-hidden="true">✓</span>
+              Сертифицирана към Royal Conservatory
+            </li>
+            <li>
+              <span class="feature-icon" aria-hidden="true">✓</span>
+              Рецитали и студийна общност
+            </li>
+            <li>
+              <span class="feature-icon" aria-hidden="true">✓</span>
+              Гъвкав график и темпо
+            </li>
+          </ul>
+        </div>
+      </section>
 
-        <!-- Lessons Section -->
-        <section id="lessons" class="lessons">
-            <div class="container">
-                <div class="lessons__header">
-                    <h2 class="lessons__title">Уроци по пиано</h2>
-                    <p class="lessons__subtitle">Изберете идеалния тип урок за вашето ниво и цели</p>
-                </div>
-                <div class="lessons__grid">
-                    <div class="card lessons__card">
-                        <div class="card__body">
-                            <h3 class="lessons__card-title">Уроци за начинаещи</h3>
-                            <p class="lessons__card-description">Перфектни за ученици, които започват своето музикално пътешествие</p>
-                            <ul class="lessons__features">
-                                <li>Основна техника</li>
-                                <li>Четене на ноти</li>
-                                <li>Прости песни</li>
-                            </ul>
-                            <p class="lessons__pricing">Свържете се за цени</p>
-                        </div>
-                    </div>
-                    <div class="card lessons__card lessons__card--featured">
-                        <div class="card__body">
-                            <h3 class="lessons__card-title">Уроци за напреднали</h3>
-                            <p class="lessons__card-description">За ученици, готови да развият уменията си</p>
-                            <ul class="lessons__features">
-                                <li>Усъвършенствана техника</li>
-                                <li>Музикална теория</li>
-                                <li>Класически произведения</li>
-                            </ul>
-                            <p class="lessons__pricing">Свържете се за цени</p>
-                        </div>
-                    </div>
-                    <div class="card lessons__card">
-                        <div class="card__body">
-                            <h3 class="lessons__card-title">Професионални уроци</h3>
-                            <p class="lessons__card-description">Професионално обучение и подготовка за изпълнения</p>
-                            <ul class="lessons__features">
-                                <li>Подготовка за изпълнения</li>
-                                <li>Усъвършенстван репертоар</li>
-                                <li>Подготовка за конкурси</li>
-                            </ul>
-                            <p class="lessons__pricing">Свържете се за цени</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lessons__formats">
-                    <h3 class="lessons__formats-title">Налични формати</h3>
-                    <div class="lessons__formats-grid">
-                        <div class="lessons__format">
-                            <h4>Присъствени уроци</h4>
-                            <p>Традиционно индивидуално обучение в студиото</p>
-                        </div>
-                        <div class="lessons__format">
-                            <h4>Онлайн уроци</h4>
-                            <p>Виртуални уроци чрез видео обаждане от дома</p>
-                        </div>
-                        <div class="lessons__format">
-                            <h4>Групови сесии</h4>
-                            <p>Уроци в малки групи за ансамблово свирене</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <section id="lessons" class="section" aria-label="Предлагани уроци">
+        <div class="container">
+          <h2>Уроци за всеки етап</h2>
+          <div class="cards">
+            <article class="card">
+              <h3>Начинаещи</h3>
+              <p>Старт с основите: стойка, ритъм, нотно четене и музикалност — винаги в твое темпо.</p>
+            </article>
+            <article class="card">
+              <h3>Средно ниво</h3>
+              <p>Разшири репертоара, развий изразност и укрепи техниката с ясни цели.</p>
+            </article>
+            <article class="card">
+              <h3>Напреднали</h3>
+              <p>Усъвършенствай нюанса, сценичните умения и интерпретацията — от Шопен до съвременни автори.</p>
+            </article>
+            <article class="card">
+              <h3>Стилове</h3>
+              <p>Класически основи с възможности за поп лидшийтове, импровизация и лек джаз.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-        <!-- Testimonials Section -->
-        <section class="testimonials">
-            <div class="container">
-                <h2 class="testimonials__title">Какво казват учениците</h2>
-                <div class="testimonials__grid">
-                    <blockquote class="card testimonial">
-                        <div class="card__body">
-                            <p class="testimonial__text">Невероятен учител! Дъщеря ми се подобри толкова много само за няколко месеца.</p>
-                            <cite class="testimonial__author">Сара М., родител</cite>
-                        </div>
-                    </blockquote>
-                    <blockquote class="card testimonial">
-                        <div class="card__body">
-                            <p class="testimonial__text">Професионален, търпелив и невероятно компетентен. Силно препоръчвам!</p>
-                            <cite class="testimonial__author">Йоан Д., възрастен ученик</cite>
-                        </div>
-                    </blockquote>
-                    <blockquote class="card testimonial">
-                        <div class="card__body">
-                            <p class="testimonial__text">Най-добрият учител по пиано в града. Синът ми обожава уроците си!</p>
-                            <cite class="testimonial__author">Мария Л., родител</cite>
-                        </div>
-                    </blockquote>
-                </div>
-            </div>
-        </section>
+      <section id="testimonials" class="section section--alt" aria-label="Отзиви от ученици">
+        <div class="container">
+          <h2>Обичана от ученици и родители</h2>
+          <div class="testimonials">
+            <figure class="testimonial">
+              <blockquote>Алина е топла, окуражаваща и много знаеща. Увереността ми расте всяка седмица.</blockquote>
+              <figcaption>— Мария, възрастен начинаещ</figcaption>
+            </figure>
+            <figure class="testimonial">
+              <blockquote>Дъщеря ни очаква с нетърпение всеки урок. Напредъкът е удивителен!</blockquote>
+              <figcaption>— Джеймс, родител</figcaption>
+            </figure>
+            <figure class="testimonial">
+              <blockquote>Технически, музикално и забавно — перфектният баланс. Горещо препоръчвам.</blockquote>
+              <figcaption>— София, средно ниво</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="contact__content">
-                    <h2 class="contact__title">Свържете се</h2>
-                    <p class="contact__subtitle">Готови ли сте да започнете своето музикално пътешествие? Свържете се с мен, за да запазите първия си урок!</p>
-                    <div class="contact__info">
-                        <div class="contact__detail">
-                            <div class="contact__icon">📧</div>
-                            <div class="contact__text">
-                                <h3>Имейл</h3>
-                                <p><a href="mailto:contact@pianoteacher.com">contact@pianoteacher.com</a></p>
-                            </div>
-                        </div>
-                        <div class="contact__detail">
-                            <div class="contact__icon">📞</div>
-                            <div class="contact__text">
-                                <h3>Телефон</h3>
-                                <p><a href="tel:+15551234567">(555) 123-4567</a></p>
-                            </div>
-                        </div>
-                        <div class="contact__detail">
-                            <div class="contact__icon">📍</div>
-                            <div class="contact__text">
-                                <h3>Локация</h3>
-                                <p>Downtown Music Studio</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      
+
+      <section id="faq" class="section section--alt" aria-label="Често задавани въпроси">
+        <div class="container">
+          <h2>Въпроси</h2>
+          <div class="accordion" role="tablist">
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">Нуждая ли се от пиано, за да започна?</button>
+              <div class="accordion-panel" hidden>
+                <p>Дигитален клавир с утежнени клавиши е идеален за начало. С радост ще препоръчам достъпни варианти.</p>
+              </div>
             </div>
-        </section>
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">Има ли уроци онлайн?</button>
+              <div class="accordion-panel" hidden>
+                <p>Да — преподавам през Zoom с няколко ъгъла на камерата и ясен звук.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">Колко често трябва да упражнявам?</button>
+              <div class="accordion-panel" hidden>
+                <p>Последователността е по-важна от маратона. 15–30 минути през повечето дни вършат чудеса за начинаещите.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact" aria-label="Контакт">
+        <div class="container contact-grid">
+          <div>
+            <h2>Запиши безплатна среща</h2>
+            <p>Разкажи ми накратко за себе си. Ще отговоря до един работен ден.</p>
+            <ul class="contact-points" aria-label="Данни за контакт">
+              <li><span aria-hidden="true">📍</span> Студио в центъра, пон–съб</li>
+              <li><span aria-hidden="true">✉️</span> anna@pianostudio.example</li>
+              <li><span aria-hidden="true">📞</span> (555) 123‑4567</li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__content">
-                <p class="footer__text">&copy; 2025 Учител по пиано. Всички права запазени.</p>
-                <p class="footer__contact">Контакт: (555) 123-4567 | contact@pianoteacher.com</p>
-            </div>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-grid">
+        <div class="brand-col">
+          <a class="brand" href="#home" aria-label="Начало – уроци по пиано">
+            <span class="brand-mark" aria-hidden="true">🎹</span>
+            <span class="brand-text">Алина – Пиано студио</span>
+          </a>
+          <p class="fine-print">© <span id="year"></span> Алина – Пиано студио. Всички права запазени.</p>
         </div>
+        <nav aria-label="Footer">
+          <ul class="footer-nav">
+            <li><a href="#about">За мен</a></li>
+            <li><a href="#lessons">Уроци</a></li>
+            <li><a href="#faq">Въпроси</a></li>
+            <li><a href="#contact">Контакт</a></li>
+          </ul>
+        </nav>
+      </div>
     </footer>
 
-    <script src="app.js"></script>
-</body>
-</html>
+    <script src="script.js"></script>
+  </body>
+  </html>
+
+
