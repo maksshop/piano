@@ -42,6 +42,18 @@ accordionTriggers.forEach((btn) => {
 
 // Contact form removed per request
 
+// Manual hover activation for hero highlight chips
+const highlights = document.querySelectorAll('.hero-highlights li');
+highlights.forEach((li) => {
+  li.addEventListener('mouseenter', () => {
+    highlights.forEach((item) => item.classList.remove('active'));
+    li.classList.add('active');
+  });
+  li.addEventListener('mouseleave', () => {
+    li.classList.remove('active');
+  });
+});
+
 // Footer year
 const yearEl = document.getElementById('year');
 if (yearEl) {
