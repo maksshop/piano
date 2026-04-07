@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Mobile-first viewport — prevents iOS auto-zoom on inputs -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- IE compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Arvia Capital – Вашият независим кредитен консултант и консултант по инвестиционни проекти. Безплатна консултация за ипотечни, потребителски и фирмени кредити, рефинансиране и бизнес планиране." />
+  <meta name="keywords" content="кредитен консултант, ипотечен кредит, потребителски кредит, фирмен кредит, рефинансиране, инвестиционни проекти, бизнес планиране, кредитен посредник, БНБ" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Arvia Capital – Кредитен и Инвестиционен Консултант" />
+  <meta property="og:description" content="Независим кредитен консултант. Безплатна консултация. Най-добрите условия на пазара." />
+  <meta property="og:type" content="website" />
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=yes" />
+  <!-- Theme color for Android Chrome -->
+  <meta name="theme-color" content="#00205b" />
+  <title>Arvia Capital – Кредитен и Инвестиционен Консултант</title>
+
+  <!-- Google Fonts — preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <header class="header" id="header" role="banner">
+    <div class="container header__inner">
+      <a href="#hero" class="header__logo" aria-label="Arvia Capital - Начало">
+        <img src="logo.jpg" alt="Arvia Capital Logo" class="header__logo-img" width="120" height="46" />
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Главна навигация">
+        <ul class="nav__list" role="list">
+          <li><a href="#hero" class="nav__link">Начало</a></li>
+          <li><a href="#about" class="nav__link">За нас</a></li>
+          <li><a href="#services" class="nav__link">Услуги</a></li>
+          <li><a href="#process" class="nav__link">Процес</a></li>
+          <li><a href="#contact" class="nav__link">Контакти</a></li>
+        </ul>
+      </nav>
+
+      <a href="#contact" class="btn btn--accent header__cta">Безплатна консултация</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Отвори меню" aria-expanded="false" aria-controls="mobileNav" type="button">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Мобилна навигация">
+    <button class="mobile-nav__close" id="mobileNavClose" aria-label="Затвори меню" type="button">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+    <ul class="mobile-nav__list" role="list">
+      <li><a href="#hero" class="mobile-nav__link">Начало</a></li>
+      <li><a href="#about" class="mobile-nav__link">За нас</a></li>
+      <li><a href="#services" class="mobile-nav__link">Услуги</a></li>
+      <li><a href="#process" class="mobile-nav__link">Процес</a></li>
+      <li><a href="#contact" class="mobile-nav__link">Контакти</a></li>
+    </ul>
+    <a href="#contact" class="btn btn--accent mobile-nav__cta">Безплатна консултация</a>
+  </div>
+
+  <main id="main" role="main">
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <div class="hero__bg-shapes" aria-hidden="true">
+        <div class="hero__shape hero__shape--1"></div>
+        <div class="hero__shape hero__shape--2"></div>
+        <div class="hero__shape hero__shape--3"></div>
+      </div>
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="hero__badge" aria-label="Лицензиран кредитен посредник">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            <span>Лицензиран кредитен посредник</span>
+          </div>
+          <h1 class="hero__title" id="heroTitle">
+            Вашият доверен партньор за <span class="hero__title--highlight">кредитно и инвестиционно</span> консултиране
+          </h1>
+          <p class="hero__subtitle">
+            Независим консултант, който работи единствено за Вашия интерес. Спестете хиляди левове, ценно време и излишно напрежение с персонализирана финансова експертиза.
+          </p>
+          <div class="hero__cta-group">
+            <a href="#contact" class="btn btn--accent btn--lg">
+              <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+              Заяви безплатна консултация
+            </a>
+            <a href="#services" class="btn btn--outline btn--lg">
+              Виж нашите услуги
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="hero__trust" aria-label="Предимства">
+            <div class="hero__trust-item">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span>100% безплатна услуга</span>
+            </div>
+            <div class="hero__trust-item">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span>Независим от банките</span>
+            </div>
+            <div class="hero__trust-item">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span>Всички водещи банки</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__card hero__card--main">
+            <div class="hero__card-icon">
+              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+            </div>
+            <div class="hero__card-content">
+              <span class="hero__card-label">Спестявания</span>
+              <span class="hero__card-value">до 30%</span>
+              <span class="hero__card-desc">по-ниски разходи по кредита</span>
+            </div>
+          </div>
+          <div class="hero__card hero__card--secondary">
+            <div class="hero__card-icon hero__card-icon--gold">
+              <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+            </div>
+            <div class="hero__card-content">
+              <span class="hero__card-label">Одобрени клиенти</span>
+              <span class="hero__card-value">500+</span>
+              <span class="hero__card-desc">успешни сделки</span>
+            </div>
+          </div>
+          <div class="hero__card hero__card--tertiary">
+            <div class="hero__card-icon hero__card-icon--light">
+              <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+            </div>
+            <div class="hero__card-content">
+              <span class="hero__card-label">Банкови партньори</span>
+              <span class="hero__card-value">15+</span>
+              <span class="hero__card-desc">водещи банки в България</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== STATS STRIP ========== -->
+    <section class="stats" aria-label="Ключови показатели">
+      <div class="container stats__inner">
+        <div class="stats__item">
+          <div style="display:flex;align-items:baseline;gap:0.1rem;">
+            <span class="stats__number" data-target="500" aria-label="500">0</span><span class="stats__suffix">+</span>
+          </div>
+          <span class="stats__label">Доволни клиенти</span>
+        </div>
+        <div class="stats__divider" aria-hidden="true"></div>
+        <div class="stats__item">
+          <div style="display:flex;align-items:baseline;gap:0.1rem;">
+            <span class="stats__number" data-target="15" aria-label="15">0</span><span class="stats__suffix">+</span>
+          </div>
+          <span class="stats__label">Банкови партньори</span>
+        </div>
+        <div class="stats__divider" aria-hidden="true"></div>
+        <div class="stats__item">
+          <div style="display:flex;align-items:baseline;gap:0.1rem;">
+            <span class="stats__number" data-target="10" aria-label="10">0</span><span class="stats__suffix">+</span>
+          </div>
+          <span class="stats__label">Години опит</span>
+        </div>
+        <div class="stats__divider" aria-hidden="true"></div>
+        <div class="stats__item">
+          <div style="display:flex;align-items:baseline;gap:0.1rem;">
+            <span class="stats__number" data-target="100" aria-label="100">0</span><span class="stats__suffix">%</span>
+          </div>
+          <span class="stats__label">Безплатна услуга</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section class="about section" id="about" aria-labelledby="aboutTitle">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__image-col">
+            <div class="about__image-wrapper">
+              <div class="about__image-bg" aria-hidden="true"></div>
+              <div class="about__image-card">
+                <img src="logo.jpg" alt="Arvia Capital лого" class="about__logo-large" width="240" height="180" loading="lazy" />
+              </div>
+              <div class="about__badge-bnb">
+                <i class="fa-solid fa-award" aria-hidden="true"></i>
+                <div>
+                  <strong>Регистриран посредник</strong>
+                  <span>в регистъра на БНБ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about__content-col">
+            <div class="section__label">За нас</div>
+            <h2 class="section__title" id="aboutTitle">Защо да изберете <span class="text--highlight">Arvia Capital?</span></h2>
+            <p class="about__lead">
+              Arvia Capital е независим кредитен консултант и консултант по инвестиционни проекти, регистриран в регистъра на Българската народна банка. Нашата мисия е да поставим Вашите финансови интереси на първо място.
+            </p>
+            <p class="about__text">
+              За разлика от банковите служители, ние не работим за конкретна финансова институция. Работим единствено за Вас. Това означава, че получавате обективен анализ на всички налични оферти на пазара и препоръка, базирана на Вашите реални нужди и финансови възможности.
+            </p>
+            <div class="about__features">
+              <div class="about__feature">
+                <div class="about__feature-icon">
+                  <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                </div>
+                <div class="about__feature-text">
+                  <strong>100% безплатна услуга</strong>
+                  <span>Не дължите нищо. Получаваме комисиона от избраната банка.</span>
+                </div>
+              </div>
+              <div class="about__feature">
+                <div class="about__feature-icon">
+                  <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+                </div>
+                <div class="about__feature-text">
+                  <strong>Независим и обективен</strong>
+                  <span>Сравняваме офертите на всички водещи банки в България.</span>
+                </div>
+              </div>
+              <div class="about__feature">
+                <div class="about__feature-icon">
+                  <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
+                </div>
+                <div class="about__feature-text">
+                  <strong>Индивидуален подход</strong>
+                  <span>Персонализирано решение, съобразено с Вашия профил и цели.</span>
+                </div>
+              </div>
+              <div class="about__feature">
+                <div class="about__feature-icon">
+                  <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                </div>
+                <div class="about__feature-text">
+                  <strong>Пълна конфиденциалност</strong>
+                  <span>Вашите данни са защитени в съответствие с GDPR.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES SECTION ========== -->
+    <section class="section section--alt" id="services" aria-labelledby="servicesTitle">
+      <div class="container">
+        <header class="section__header">
+          <div class="section__label">Нашите услуги</div>
+          <h2 class="section__title" id="servicesTitle">Пълен спектър от <span class="text--highlight">финансови решения</span></h2>
+          <p class="section__subtitle">Независимо дали купувате дом, развивате бизнес или планирате инвестиция — Arvia Capital е до Вас на всяка стъпка.</p>
+        </header>
+
+        <div class="services__grid">
+          <!-- Ипотечни кредити -->
+          <article class="service-card">
+            <div class="service-card__icon service-card__icon--blue">
+              <i class="fa-solid fa-house" aria-hidden="true"></i>
+            </div>
+            <h3 class="service-card__title">Ипотечни кредити</h3>
+            <p class="service-card__text">Съдействие при покупка на нов дом или апартамент. Сравняваме офертите на всички водещи банки и договаряме най-изгодните лихви, такси и условия, съобразени с Вашия профил.</p>
+            <ul class="service-card__list" role="list">
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Жилищни и ипотечни кредити</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Кредити за строителство</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Ипотека за чужди граждани</li>
+            </ul>
+            <a href="#contact" class="service-card__link">Заяви консултация <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </article>
+
+          <!-- Потребителски кредити -->
+          <article class="service-card">
+            <div class="service-card__icon service-card__icon--gold">
+              <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+            </div>
+            <h3 class="service-card__title">Потребителски кредити</h3>
+            <p class="service-card__text">Бързо и лесно финансиране за Вашите текущи нужди — ремонт, образование, пътуване или непредвидени разходи. Намираме оптималните лихвени нива и условия за Вас.</p>
+            <ul class="service-card__list" role="list">
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Необезпечени потребителски кредити</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Кредити с обезпечение</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Кредитни карти и овърдрафт</li>
+            </ul>
+            <a href="#contact" class="service-card__link">Заяви консултация <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </article>
+
+          <!-- Фирмени кредити -->
+          <article class="service-card">
+            <div class="service-card__icon service-card__icon--blue">
+              <i class="fa-solid fa-building" aria-hidden="true"></i>
+            </div>
+            <h3 class="service-card__title">Фирмени кредити</h3>
+            <p class="service-card__text">Структуриране на бизнес финансиране за малки и средни предприятия. Оборотни кредити, инвестиционни заеми и финансиране за развитие на Вашата компания при оптимални условия.</p>
+            <ul class="service-card__list" role="list">
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Оборотно финансиране</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Инвестиционни заеми</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Финансиране по европейски програми</li>
+            </ul>
+            <a href="#contact" class="service-card__link">Заяви консултация <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </article>
+
+          <!-- Рефинансиране -->
+          <article class="service-card">
+            <div class="service-card__icon service-card__icon--gold">
+              <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+            </div>
+            <h3 class="service-card__title">Рефинансиране</h3>
+            <p class="service-card__text">Оптимизирайте текущите си задължения. Обединяваме и рефинансираме съществуващи кредити при по-добри условия и намаляваме месечните Ви вноски.</p>
+            <ul class="service-card__list" role="list">
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Рефинансиране на ипотека</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Обединяване на кредити</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Намаляване на месечни вноски</li>
+            </ul>
+            <a href="#contact" class="service-card__link">Заяви консултация <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </article>
+
+          <!-- Инвестиционни проекти — Featured -->
+          <article class="service-card service-card--featured">
+            <span class="service-card__featured-badge">Специализирана услуга</span>
+            <div class="service-card__icon service-card__icon--white">
+              <i class="fa-solid fa-chart-pie" aria-hidden="true"></i>
+            </div>
+            <h3 class="service-card__title">Инвестиционни проекти</h3>
+            <p class="service-card__text">Комплексно консултиране за бизнес начинания и инвестиционни проекти. Изготвяме бизнес планове, анализираме възвръщаемостта (ROI) и структурираме финансирането за Вашата идея.</p>
+            <ul class="service-card__list" role="list">
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Бизнес планиране и финансови прогнози</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Анализ на ROI и инвестиционна оценка</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Европейски фондове и програми</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Структуриране на финансиране</li>
+            </ul>
+            <a href="#contact" class="service-card__link service-card__link--white">Заяви консултация <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROCESS SECTION ========== -->
+    <section class="section" id="process" aria-labelledby="processTitle">
+      <div class="container">
+        <header class="section__header">
+          <div class="section__label">Как работим</div>
+          <h2 class="section__title" id="processTitle">Четири лесни стъпки до <span class="text--highlight">Вашето финансиране</span></h2>
+          <p class="section__subtitle">Процесът е прозрачен, лесен и изцяло управляван от нас. Вие се фокусирате върху важното — ние се грижим за останалото.</p>
+        </header>
+
+        <div class="process__steps" role="list">
+          <div class="process__step" role="listitem">
+            <div class="process__step-number" aria-hidden="true">01</div>
+            <div class="process__step-content">
+              <div class="process__step-icon">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              </div>
+              <h3 class="process__step-title">Безплатна консултация</h3>
+              <p class="process__step-text">Свържете се с нас по телефон, имейл или чрез формата. Провеждаме безплатна първоначална консултация за Вашите нужди и цели.</p>
+            </div>
+          </div>
+
+          <div class="process__connector" aria-hidden="true">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+
+          <div class="process__step" role="listitem">
+            <div class="process__step-number" aria-hidden="true">02</div>
+            <div class="process__step-content">
+              <div class="process__step-icon">
+                <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+              </div>
+              <h3 class="process__step-title">Анализ и сравнение</h3>
+              <p class="process__step-text">Анализираме Вашия финансов профил и сравняваме офертите на всички партньорски банки, за да намерим най-изгодното решение.</p>
+            </div>
+          </div>
+
+          <div class="process__connector" aria-hidden="true">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+
+          <div class="process__step" role="listitem">
+            <div class="process__step-number" aria-hidden="true">03</div>
+            <div class="process__step-content">
+              <div class="process__step-icon">
+                <i class="fa-solid fa-file-signature" aria-hidden="true"></i>
+              </div>
+              <h3 class="process__step-title">Подготовка на документи</h3>
+              <p class="process__step-text">Съдействаме при подготовката на всички необходими документи и подаването на кредитното искане към избраната банка.</p>
+            </div>
+          </div>
+
+          <div class="process__connector" aria-hidden="true">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+
+          <div class="process__step" role="listitem">
+            <div class="process__step-number" aria-hidden="true">04</div>
+            <div class="process__step-content">
+              <div class="process__step-icon">
+                <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              </div>
+              <h3 class="process__step-title">Одобрение и подписване</h3>
+              <p class="process__step-text">Придружаваме Ви до финалното одобрение и подписване на договора. Ние сме до Вас на всяка стъпка от процеса.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="process__cta">
+          <p>Готови ли сте да започнете? Свържете се с нас още днес.</p>
+          <a href="#contact" class="btn btn--primary btn--lg">
+            <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+            Заяви безплатна консултация
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section class="section section--alt" id="testimonials" aria-labelledby="testimonialsTitle">
+      <div class="container">
+        <header class="section__header">
+          <div class="section__label">Отзиви</div>
+          <h2 class="section__title" id="testimonialsTitle">Какво казват <span class="text--highlight">нашите клиенти</span></h2>
+        </header>
+
+        <div class="testimonials__grid">
+          <article class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 от 5 звезди">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="testimonial-card__text">
+              "Arvia Capital ни помогна да намерим ипотека с лихва с 0.8% по-ниска от тази, която ни предложи нашата банка. Спестихме над 15 000 лв. за целия период на кредита. Изключително професионален екип!"
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">МП</div>
+              <div>
+                <strong>Мария Петрова</strong>
+                <span>Ипотечен кредит, София</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 от 5 звезди">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="testimonial-card__text">
+              "Рефинансирахме фирмения си кредит с помощта на Arvia Capital и намалихме месечните вноски с 23%. Процесът беше изключително лесен — те се погрижиха за всичко. Препоръчвам ги на всеки бизнес собственик."
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">ГД</div>
+              <div>
+                <strong>Георги Димитров</strong>
+                <span>Фирмен кредит, Пловдив</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 от 5 звезди">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="testimonial-card__text">
+              "Като чужд гражданин се притеснявах, че ще е трудно да получа ипотека в България. Arvia Capital ме насочиха към точната банка и ми помогнаха с целия процес. Сега имам апартамент в Бургас!"
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">АС</div>
+              <div>
+                <strong>Александър Стефанов</strong>
+                <span>Ипотека за чужди граждани, Бургас</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section class="section" id="contact" aria-labelledby="contactTitle">
+      <div class="container">
+        <header class="section__header">
+          <div class="section__label">Контакти</div>
+          <h2 class="section__title" id="contactTitle">Свържете се с нас <span class="text--highlight">днес</span></h2>
+          <p class="section__subtitle">Заявете своята безплатна консултация. Ще се свържем с Вас в рамките на 24 часа.</p>
+        </header>
+
+        <div class="contact__inner">
+          <div class="contact__info">
+            <h3 class="contact__info-title">Информация за контакт</h3>
+
+            <div class="contact__info-item">
+              <div class="contact__info-icon" aria-hidden="true">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <strong>Телефон</strong>
+                <a href="tel:+359888000000">+359 888 000 000</a>
+              </div>
+            </div>
+
+            <div class="contact__info-item">
+              <div class="contact__info-icon" aria-hidden="true">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <strong>Имейл</strong>
+                <a href="mailto:info@arviacapital.bg">info@arviacapital.bg</a>
+              </div>
+            </div>
+
+            <div class="contact__info-item">
+              <div class="contact__info-icon" aria-hidden="true">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div>
+                <strong>Работно време</strong>
+                <span>Понеделник – Петък: 09:00 – 18:00</span>
+                <span>Събота: 10:00 – 14:00 (по уговорка)</span>
+              </div>
+            </div>
+
+            <div class="contact__info-item">
+              <div class="contact__info-icon" aria-hidden="true">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <strong>Обслужвани райони</strong>
+                <span>Цялата страна – онлайн и на живо</span>
+              </div>
+            </div>
+
+            <div class="contact__social" aria-label="Социални мрежи">
+              <a href="#" class="contact__social-link" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="contact__social-link" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="contact__social-link" aria-label="Instagram">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact__form-wrapper">
+            <form class="contact__form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+              <div class="form__group">
+                <label for="service" class="form__label">Услуга</label>
+                <select id="service" name="service" class="form__select">
+                  <option value="" disabled selected>Изберете услуга</option>
+                  <option value="Ипотечен кредит">Ипотечен кредит</option>
+                  <option value="Потребителски кредит">Потребителски кредит</option>
+                  <option value="Фирмен кредит">Фирмен кредит</option>
+                  <option value="Рефинансиране">Рефинансиране</option>
+                  <option value="Инвестиционен проект">Инвестиционен проект</option>
+                  <option value="Друго">Друго</option>
+                </select>
+              </div>
+
+              <div class="form__row">
+                <div class="form__group">
+                  <label for="name" class="form__label">Вашето име <span class="form__required" aria-hidden="true">*</span></label>
+                  <input type="text" id="name" name="name" class="form__input" placeholder="Иван Иванов" required autocomplete="name" inputmode="text" />
+                  <span class="form__error" id="nameError" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="form__group">
+                  <label for="phone" class="form__label">Телефон <span class="form__required" aria-hidden="true">*</span></label>
+                  <input type="tel" id="phone" name="phone" class="form__input" placeholder="+359 888 000 000" required autocomplete="tel" inputmode="tel" />
+                  <span class="form__error" id="phoneError" role="alert" aria-live="polite"></span>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <label for="email" class="form__label">Имейл адрес <span class="form__required" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" class="form__input" placeholder="ivan@example.com" required autocomplete="email" inputmode="email" />
+                <span class="form__error" id="emailError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form__group">
+                <label for="message" class="form__label">Съобщение</label>
+                <textarea id="message" name="message" class="form__textarea" rows="4" placeholder="Опишете накратко Вашата ситуация и нужди..."></textarea>
+              </div>
+
+              <div class="form__group form__group--checkbox">
+                <input type="checkbox" id="gdpr" name="gdpr" class="form__checkbox" required />
+                <label for="gdpr" class="form__checkbox-label">
+                  Съгласен/а съм с <a href="#" class="form__link">Политиката за поверителност</a> и обработката на личните ми данни.
+                </label>
+                <span class="form__error" id="gdprError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                Изпрати запитване
+              </button>
+
+              <div class="form__success" id="formSuccess" role="status" aria-live="polite">
+                <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                <strong>Благодарим Ви!</strong>&nbsp;Ще се свържем с Вас в рамките на 24 часа.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="logo.jpg" alt="Arvia Capital" class="footer__logo" width="120" height="52" loading="lazy" />
+        <p class="footer__tagline">Вашият независим партньор за кредитно и инвестиционно консултиране.</p>
+        <p class="footer__bnb">Регистриран кредитен посредник в регистъра на БНБ.</p>
+      </div>
+
+      <nav class="footer__links" aria-label="Услуги">
+        <h4 class="footer__links-title">Услуги</h4>
+        <ul role="list">
+          <li><a href="#services">Ипотечни кредити</a></li>
+          <li><a href="#services">Потребителски кредити</a></li>
+          <li><a href="#services">Фирмени кредити</a></li>
+          <li><a href="#services">Рефинансиране</a></li>
+          <li><a href="#services">Инвестиционни проекти</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__links" aria-label="Компания">
+        <h4 class="footer__links-title">Компания</h4>
+        <ul role="list">
+          <li><a href="#about">За нас</a></li>
+          <li><a href="#process">Как работим</a></li>
+          <li><a href="#contact">Контакти</a></li>
+          <li><a href="#">Политика за поверителност</a></li>
+          <li><a href="#">Общи условия</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <h4 class="footer__links-title">Контакти</h4>
+        <p><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+359888000000">+359 888 000 000</a></p>
+        <p><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:info@arviacapital.bg">info@arviacapital.bg</a></p>
+        <p><i class="fa-solid fa-clock" aria-hidden="true"></i> <span>Пон–Пет: 09:00–18:00</span></p>
+        <div class="footer__social" aria-label="Социални мрежи">
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>&copy; 2026 Arvia Capital. Всички права запазени.</p>
+        <p>Изработено с <i class="fa-solid fa-heart" style="color:#e74c3c" aria-hidden="true"></i> за Вашия успех</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating CTA -->
+  <a href="#contact" class="floating-cta" id="floatingCta" aria-label="Заяви безплатна консултация">
+    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+    <span>Безплатна консултация</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
