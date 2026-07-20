@@ -1,577 +1,816 @@
-/* =============================================
-   ARVIA CAPITAL - SCRIPT.JS
-   Cross-browser compatible: Chrome, Firefox, Edge, Safari (iOS/Android)
-   ============================================= */
+/**
+ * Estate Atelier - Main JavaScript
+ * Modular structure with localStorage theme persistence
+ */
 
-'use strict';
+// ============================================
+// THEME MODULE
+// ============================================
+const ThemeModule = (() => {
+  const STORAGE_KEY = "estate-atelier-theme";
+  const root = document.documentElement;
+  const themeToggle = document.querySelector('[data-theme-toggle]');
 
-// ---- DOM Ready ----
-document.addEventListener('DOMContentLoaded', function() {
-  initHeader();
-  initMobileNav();
-  initSmoothScroll();
-  initActiveNavLinks();
-  initStatsCounter();
-  initFloatingCTA();
-  initContactForm();
-  initScrollAnimations();
-});
+  // Get saved theme or system preference
+  const getInitialTheme = () => {
+    const savedTheme = localStorage.getItem(STORAGE_KEY);
+    if (savedTheme) return savedTheme;
+    
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : 'light';
+  };
 
-/* =============================================
-   HEADER - Scroll Shadow
-   ============================================= */
-function initHeader() {
-  var header = document.getElementById('header');
-  if (!header) return;
+  // Update theme icon based on current theme
+  const updateThemeIcon = (theme) => {
+    if (!themeToggle) return;
+    
+    const moonIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    const sunIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+    
+    themeToggle.innerHTML = theme === 'dark' ? sunIcon : moonIcon;
+  };
 
-  var onScroll = function() {
-    if (window.pageYOffset > 20) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+  // Set theme
+  const setTheme = (theme) => {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+    updateThemeIcon(theme);
+  };
+
+  // Toggle theme
+  const toggleTheme = () => {
+    const currentTheme = root.getAttribute('data-theme') || 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+  };
+
+  // Initialize
+  const init = () => {
+    if (!themeToggle) return;
+    
+    const initialTheme = getInitialTheme();
+    setTheme(initialTheme);
+    
+    themeToggle.addEventListener('click', toggleTheme);
+  };
+
+  return { init };
+})();
+
+// ============================================
+// MOBILE MENU MODULE
+// ============================================
+const MobileMenuModule = (() => {
+  const menuToggle = document.querySelector('[data-menu-toggle]');
+  const mobilePanel = document.querySelector('[data-mobile-panel]');
+
+  const toggleMenu = () => {
+    if (!mobilePanel || !menuToggle) return;
+    const isOpen = mobilePanel.classList.toggle('is-open');
+    
+    // Update ARIA attributes
+    menuToggle.setAttribute('aria-expanded', isOpen);
+    mobilePanel.setAttribute('aria-hidden', !isOpen);
+    
+    // Focus management
+    if (isOpen) {
+      const firstLink = mobilePanel.querySelector('a');
+      if (firstLink) firstLink.focus();
     }
   };
 
-  window.addEventListener('scroll', onScroll, supportsPassive() ? { passive: true } : false);
-  onScroll();
-}
-
-/* =============================================
-   MOBILE NAVIGATION — iOS-safe scroll lock
-   ============================================= */
-function initMobileNav() {
-  var hamburger = document.getElementById('hamburger');
-  var mobileNav = document.getElementById('mobileNav');
-  var mobileNavClose = document.getElementById('mobileNavClose');
-  var mobileLinks = document.querySelectorAll('.mobile-nav__link, .mobile-nav__cta');
-
-  if (!hamburger || !mobileNav) return;
-
-  var scrollY = 0;
-
-  var openNav = function() {
-    // iOS-safe scroll lock: record position, fix body
-    scrollY = window.pageYOffset;
-    document.body.style.position = 'fixed';
-    document.body.style.top = '-' + scrollY + 'px';
-    document.body.style.width = '100%';
-    document.body.style.overflowY = 'scroll';
-
-    hamburger.classList.add('open');
-    hamburger.setAttribute('aria-expanded', 'true');
-    mobileNav.classList.add('open');
-    mobileNav.setAttribute('aria-hidden', 'false');
+  const closeMenu = () => {
+    if (!mobilePanel || !menuToggle) return;
+    mobilePanel.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    mobilePanel.setAttribute('aria-hidden', 'true');
   };
 
-  var closeNav = function() {
-    // Restore scroll position
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    document.body.style.overflowY = '';
-    window.scrollTo(0, scrollY);
+  const init = () => {
+    if (!menuToggle || !mobilePanel) return;
 
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    mobileNav.classList.remove('open');
-    mobileNav.setAttribute('aria-hidden', 'true');
-  };
+    menuToggle.addEventListener('click', toggleMenu);
 
-  hamburger.addEventListener('click', function() {
-    if (mobileNav.classList.contains('open')) {
-      closeNav();
-    } else {
-      openNav();
-    }
-  });
+    // Close menu when clicking on links
+    mobilePanel.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
 
-  if (mobileNavClose) {
-    mobileNavClose.addEventListener('click', closeNav);
-  }
-
-  // Close on link click
-  for (var i = 0; i < mobileLinks.length; i++) {
-    mobileLinks[i].addEventListener('click', closeNav);
-  }
-
-  // Close on Escape key
-  document.addEventListener('keydown', function(e) {
-    var key = e.key || e.keyCode;
-    if ((key === 'Escape' || key === 'Esc' || key === 27) && mobileNav.classList.contains('open')) {
-      closeNav();
-    }
-  });
-
-  // Close on overlay click (outside nav content)
-  mobileNav.addEventListener('click', function(e) {
-    if (e.target === mobileNav) {
-      closeNav();
-    }
-  });
-}
-
-/* =============================================
-   SMOOTH SCROLL — cross-browser safe
-   ============================================= */
-function initSmoothScroll() {
-  var headerHeight = getHeaderHeight();
-
-  var anchors = document.querySelectorAll('a[href^="#"]');
-
-  for (var i = 0; i < anchors.length; i++) {
-    anchors[i].addEventListener('click', function(e) {
-      var targetId = this.getAttribute('href');
-      if (!targetId || targetId === '#') return;
-
-      var target = document.querySelector(targetId);
-      if (!target) return;
-
-      e.preventDefault();
-
-      var targetPosition = getOffsetTop(target) - headerHeight;
-
-      // Use native smooth scroll if supported, otherwise polyfill
-      if ('scrollBehavior' in document.documentElement.style) {
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-      } else {
-        smoothScrollTo(targetPosition, 600);
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobilePanel.classList.contains('is-open')) {
+        closeMenu();
+        menuToggle.focus();
       }
     });
-  }
-}
 
-// Polyfill for smooth scroll
-function smoothScrollTo(targetY, duration) {
-  var startY = window.pageYOffset;
-  var diff = targetY - startY;
-  var startTime = null;
+    // Close menu on click outside
+    document.addEventListener('click', (e) => {
+      if (!mobilePanel.contains(e.target) && !menuToggle.contains(e.target)) {
+        closeMenu();
+      }
+    });
+  };
 
-  function step(currentTime) {
-    if (!startTime) startTime = currentTime;
-    var elapsed = currentTime - startTime;
-    var progress = Math.min(elapsed / duration, 1);
-    // Ease in-out quad
-    var eased = progress < 0.5
-      ? 2 * progress * progress
-      : -1 + (4 - 2 * progress) * progress;
+  return { init };
+})();
 
-    window.scrollTo(0, startY + diff * eased);
+// ============================================
+// SCROLL ANIMATIONS MODULE
+// ============================================
+const ScrollAnimationsModule = (() => {
+  const observerOptions = {
+    threshold: 0.14,
+    rootMargin: '0px 0px -50px 0px'
+  };
 
-    if (elapsed < duration) {
-      requestAnimationFrame(step);
+  const handleIntersection = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        // Optional: unobserve after animation
+        // observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  const init = () => {
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    if (revealElements.length === 0) return;
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    revealElements.forEach(el => observer.observe(el));
+  };
+
+  return { init };
+})();
+
+// ============================================
+// TOAST NOTIFICATION MODULE
+// ============================================
+const ToastModule = (() => {
+  const showToast = (message, type = 'success') => {
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.style.cssText = `
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      padding: 1rem 2rem;
+      border-radius: var(--radius-lg);
+      background: ${type === 'success' ? 'var(--color-success)' : '#dc3545'};
+      color: white;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    `;
+    
+    const icon = type === 'success' ? '✓' : '✕';
+    toast.innerHTML = `<span style="font-size: 1.2rem;">${icon}</span> ${message}`;
+    
+    document.body.appendChild(toast);
+    
+    // Animate in
+    requestAnimationFrame(() => {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+    });
+    
+    // Remove after delay
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(100px)';
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  };
+
+  return { showToast };
+})();
+
+// ============================================
+// CONTACT FORM MODULE
+// ============================================
+const ContactFormModule = (() => {
+  const form = document.getElementById('contactForm');
+  const SUBMIT_SUCCESS_MESSAGE = 'Изпратено успешно';
+  const RESET_DELAY = 1800;
+
+  const validateForm = (formData) => {
+    const errors = {};
+    
+    if (!formData.get('name')?.trim()) {
+      errors.name = 'Моля, въведете вашето име';
     }
-  }
+    
+    if (!formData.get('phone')?.trim()) {
+      errors.phone = 'Моля, въведете вашия телефон';
+    }
+    
+    const email = formData.get('email')?.trim();
+    if (email && !isValidEmail(email)) {
+      errors.email = 'Моля, въведете валиден имейл адрес';
+    }
+    
+    return errors;
+  };
 
-  requestAnimationFrame(step);
-}
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
-// Get element offset from top of document (cross-browser)
-function getOffsetTop(el) {
-  var top = 0;
-  while (el) {
-    top += el.offsetTop || 0;
-    el = el.offsetParent;
-  }
-  return top;
-}
+  const showSuccess = (btn, originalText) => {
+    btn.textContent = SUBMIT_SUCCESS_MESSAGE;
+    btn.disabled = true;
+    
+    // Show toast notification
+    ToastModule.showToast('Запитването е изпратено успешно!', 'success');
+    
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.disabled = false;
+      form.reset();
+    }, RESET_DELAY);
+  };
 
-function getHeaderHeight() {
-  var header = document.getElementById('header');
-  return header ? header.offsetHeight : 72;
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (!form) return;
 
-/* =============================================
-   ACTIVE NAV LINKS
-   ============================================= */
-function initActiveNavLinks() {
-  var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.nav__link');
+    const formData = new FormData(form);
+    const errors = validateForm(formData);
+    
+    if (Object.keys(errors).length > 0) {
+      console.warn('Form validation errors:', errors);
+      ToastModule.showToast('Моля, попълнете всички задължителни полета', 'error');
+      return;
+    }
 
-  if (!sections.length || !navLinks.length) return;
+    const btn = form.querySelector('button[type="submit"]');
+    if (!btn) return;
 
-  // Use IntersectionObserver if available, else scroll fallback
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var id = entry.target.getAttribute('id');
-          navLinks.forEach(function(link) {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + id) {
-              link.classList.add('active');
-            }
+    const originalText = btn.textContent;
+    
+    try {
+      // Here you would typically send the form data to a server
+      // For now, we'll just show success
+      showSuccess(btn, originalText);
+      
+      console.log('Form submitted successfully:', Object.fromEntries(formData));
+    } catch (error) {
+      console.error('Form submission error:', error);
+      btn.textContent = 'Грешка при изпращане';
+      ToastModule.showToast('Възникна грешка при изпращане', 'error');
+      setTimeout(() => {
+        btn.textContent = originalText;
+      }, RESET_DELAY);
+    }
+  };
+
+  const init = () => {
+    if (!form) return;
+    
+    form.addEventListener('submit', handleSubmit);
+  };
+
+  return { init };
+})();
+
+// ============================================
+// SMOOTH SCROLL MODULE
+// ============================================
+const SmoothScrollModule = (() => {
+  const init = () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
           });
         }
       });
-    }, {
-      rootMargin: '-30% 0px -60% 0px',
-      threshold: 0
     });
+  };
 
-    sections.forEach(function(section) {
-      observer.observe(section);
-    });
-  } else {
-    // Fallback: scroll-based active link
-    window.addEventListener('scroll', function() {
-      var scrollPos = window.pageYOffset + getHeaderHeight() + 50;
-      sections.forEach(function(section) {
-        var top = getOffsetTop(section);
-        var bottom = top + section.offsetHeight;
-        if (scrollPos >= top && scrollPos < bottom) {
-          var id = section.getAttribute('id');
-          navLinks.forEach(function(link) {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + id) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, supportsPassive() ? { passive: true } : false);
-  }
-}
+  return { init };
+})();
 
-/* =============================================
-   STATS COUNTER ANIMATION
-   ============================================= */
-function initStatsCounter() {
-  var statsNumbers = document.querySelectorAll('.stats__number[data-target]');
-  if (!statsNumbers.length) return;
-
-  var animateCounter = function(el) {
-    var target = parseInt(el.getAttribute('data-target'), 10);
-    var duration = 2000;
-    var startTime = null;
-
-    var update = function(currentTime) {
-      if (!startTime) startTime = currentTime;
-      var elapsed = currentTime - startTime;
-      var progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      var eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target);
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
+// ============================================
+// ANIMATED COUNTERS MODULE
+// ============================================
+const CountersModule = (() => {
+  const animateCounter = (element, target, duration = 2000) => {
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+    
+    const updateCounter = () => {
+      current += increment;
+      if (current < target) {
+        element.textContent = Math.floor(current);
+        requestAnimationFrame(updateCounter);
       } else {
-        el.textContent = target;
+        element.textContent = target;
       }
     };
-
-    requestAnimationFrame(update);
+    
+    updateCounter();
   };
 
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
+  const init = () => {
+    const counters = document.querySelectorAll('.counter');
+    const metrics = document.querySelectorAll('.metric[data-count]');
+    
+    if (metrics.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          observer.unobserve(entry.target);
+          const counter = entry.target.querySelector('.counter');
+          const target = parseInt(entry.target.dataset.count);
+          
+          if (counter && target) {
+            animateCounter(counter, target);
+            observer.unobserve(entry.target);
+          }
         }
       });
     }, { threshold: 0.5 });
 
-    statsNumbers.forEach(function(el) {
-      observer.observe(el);
-    });
-  } else {
-    // Fallback: animate all immediately
-    statsNumbers.forEach(function(el) {
-      animateCounter(el);
-    });
-  }
-}
-
-/* =============================================
-   FLOATING CTA VISIBILITY
-   ============================================= */
-function initFloatingCTA() {
-  var floatingCta = document.getElementById('floatingCta');
-  if (!floatingCta) return;
-
-  var heroSection = document.getElementById('hero');
-
-  var onScroll = function() {
-    if (!heroSection) {
-      floatingCta.classList.add('visible');
-      return;
-    }
-
-    var heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-    var scrollPos = window.pageYOffset;
-
-    if (scrollPos > heroBottom - 100) {
-      floatingCta.classList.add('visible');
-    } else {
-      floatingCta.classList.remove('visible');
-    }
+    metrics.forEach(metric => observer.observe(metric));
   };
 
-  window.addEventListener('scroll', onScroll, supportsPassive() ? { passive: true } : false);
-  onScroll();
-}
+  return { init };
+})();
 
-/* =============================================
-   CONTACT FORM VALIDATION & SUBMISSION
-   ============================================= */
-function initContactForm() {
-  var form = document.getElementById('contactForm');
-  if (!form) return;
+// ============================================
+// SCROLL PROGRESS MODULE
+// ============================================
+const ScrollProgressModule = (() => {
+  const init = () => {
+    // Create progress bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+      z-index: 1000;
+      transition: width 0.1s ease;
+    `;
+    document.body.appendChild(progressBar);
 
-  var nameInput = document.getElementById('name');
-  var phoneInput = document.getElementById('phone');
-  var emailInput = document.getElementById('email');
-  var gdprCheckbox = document.getElementById('gdpr');
-  var submitBtn = document.getElementById('submitBtn');
-  var formSuccess = document.getElementById('formSuccess');
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      progressBar.style.width = `${progress}%`;
+    };
 
-  var showError = function(inputId, message) {
-    var errorEl = document.getElementById(inputId + 'Error');
-    var inputEl = document.getElementById(inputId);
-    if (errorEl) errorEl.textContent = message;
-    if (inputEl) inputEl.classList.add('error');
+    window.addEventListener('scroll', updateProgress);
   };
 
-  var clearError = function(inputId) {
-    var errorEl = document.getElementById(inputId + 'Error');
-    var inputEl = document.getElementById(inputId);
-    if (errorEl) errorEl.textContent = '';
-    if (inputEl) inputEl.classList.remove('error');
-  };
+  return { init };
+})();
 
-  var validateEmail = function(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
+// ============================================
+// BACK TO TOP MODULE
+// ============================================
+const BackToTopModule = (() => {
+  const init = () => {
+    const button = document.createElement('button');
+    button.className = 'back-to-top';
+    button.setAttribute('aria-label', 'Обратно към началото');
+    button.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>';
+    button.style.cssText = `
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3rem;
+      height: 3rem;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 99;
+      box-shadow: var(--shadow-md);
+    `;
+    document.body.appendChild(button);
 
-  var validatePhone = function(phone) {
-    return /^[\+\d\s\-\(\)]{7,}$/.test(phone.trim());
-  };
-
-  // Real-time validation
-  if (nameInput) {
-    nameInput.addEventListener('input', function() {
-      if (nameInput.value.trim().length >= 2) clearError('name');
-    });
-  }
-
-  if (phoneInput) {
-    phoneInput.addEventListener('input', function() {
-      if (validatePhone(phoneInput.value)) clearError('phone');
-    });
-  }
-
-  if (emailInput) {
-    emailInput.addEventListener('input', function() {
-      if (validateEmail(emailInput.value)) clearError('email');
-    });
-  }
-
-  // Form submission
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    var isValid = true;
-
-    // Validate name
-    if (!nameInput || nameInput.value.trim().length < 2) {
-      showError('name', 'Моля, въведете Вашето пълно име.');
-      isValid = false;
-    } else {
-      clearError('name');
-    }
-
-    // Validate phone
-    if (!phoneInput || !validatePhone(phoneInput.value)) {
-      showError('phone', 'Моля, въведете валиден телефонен номер.');
-      isValid = false;
-    } else {
-      clearError('phone');
-    }
-
-    // Validate email
-    if (!emailInput || !validateEmail(emailInput.value)) {
-      showError('email', 'Моля, въведете валиден имейл адрес.');
-      isValid = false;
-    } else {
-      clearError('email');
-    }
-
-    // Validate GDPR
-    if (!gdprCheckbox || !gdprCheckbox.checked) {
-      var gdprError = document.getElementById('gdprError');
-      if (gdprError) gdprError.textContent = 'Моля, приемете политиката за поверителност.';
-      isValid = false;
-    } else {
-      var gdprErr = document.getElementById('gdprError');
-      if (gdprErr) gdprErr.textContent = '';
-    }
-
-    if (!isValid) return;
-
-    // Submit
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Изпращане...';
-
-    var formAction = form.getAttribute('action');
-
-    // Check if Formspree is configured
-    if (formAction && formAction.indexOf('YOUR_FORM_ID') === -1 && formAction.indexOf('formspree') !== -1) {
-      // Use fetch if available, else XMLHttpRequest
-      if (typeof fetch !== 'undefined') {
-        var formData = new FormData(form);
-        fetch(formAction, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        })
-        .then(function(response) {
-          if (response.ok) {
-            onFormSuccess();
-          } else {
-            onFormError();
-          }
-        })
-        .catch(function() {
-          onFormError();
-        });
+    const toggleButton = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 500) {
+        button.style.opacity = '1';
+        button.style.visibility = 'visible';
+        button.style.transform = 'translateY(0)';
       } else {
-        // XMLHttpRequest fallback for older browsers
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', formAction, true);
-        xhr.setRequestHeader('Accept', 'application/json');
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === 4) {
-            if (xhr.status >= 200 && xhr.status < 300) {
-              onFormSuccess();
-            } else {
-              onFormError();
-            }
-          }
-        };
-        xhr.send(new FormData(form));
+        button.style.opacity = '0';
+        button.style.visibility = 'hidden';
+        button.style.transform = 'translateY(20px)';
       }
-    } else {
-      // Mailto fallback
-      var name = nameInput ? nameInput.value.trim() : '';
-      var phone = phoneInput ? phoneInput.value.trim() : '';
-      var email = emailInput ? emailInput.value.trim() : '';
-      var serviceEl = document.getElementById('service');
-      var service = serviceEl ? serviceEl.value : '';
-      var messageEl = document.getElementById('message');
-      var message = messageEl ? messageEl.value.trim() : '';
+    };
 
-      var mailtoBody = encodeURIComponent(
-        'Запитване от: ' + name +
-        '\nТелефон: ' + phone +
-        '\nИмейл: ' + email +
-        '\nУслуга: ' + service +
-        '\n\nСъобщение:\n' + message
-      );
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    };
 
-      window.location.href = 'mailto:info@arviacapital.bg?subject=' +
-        encodeURIComponent('Запитване за ' + (service || 'консултация')) +
-        '&body=' + mailtoBody;
-
-      onFormSuccess();
-    }
-
-    function onFormSuccess() {
-      form.reset();
-      if (formSuccess) formSuccess.classList.add('visible');
-      submitBtn.innerHTML = '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Изпратено!';
-      // Scroll to success message
-      if (formSuccess) {
-        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }
-
-    function onFormError() {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Изпрати запитване';
-      alert('Възникна грешка. Моля, опитайте отново или се свържете с нас по телефон.');
-    }
-  });
-}
-
-/* =============================================
-   SCROLL ANIMATIONS (Fade In)
-   Cross-browser: IntersectionObserver + fallback
-   ============================================= */
-function initScrollAnimations() {
-  var animatables = document.querySelectorAll(
-    '.service-card, .about__feature, .process__step, .testimonial-card, .stats__item'
-  );
-
-  if (!animatables.length) return;
-
-  // Apply initial hidden state
-  var items = Array.prototype.slice.call(animatables);
-  items.forEach(function(el, index) {
-    el.style.opacity = '0';
-    el.style.webkitTransform = 'translateY(24px)';
-    el.style.transform = 'translateY(24px)';
-    var delay = (index % 4) * 0.1;
-    el.style.webkitTransition = 'opacity 0.6s ease ' + delay + 's, -webkit-transform 0.6s ease ' + delay + 's';
-    el.style.transition = 'opacity 0.6s ease ' + delay + 's, transform 0.6s ease ' + delay + 's';
-  });
-
-  var reveal = function(el) {
-    el.style.opacity = '1';
-    el.style.webkitTransform = 'translateY(0)';
-    el.style.transform = 'translateY(0)';
+    window.addEventListener('scroll', toggleButton);
+    button.addEventListener('click', scrollToTop);
   };
 
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          reveal(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
-    });
+  return { init };
+})();
 
-    items.forEach(function(el) {
-      observer.observe(el);
-    });
-  } else {
-    // Fallback: reveal all on scroll
-    var revealed = [];
+// ============================================
+// PARALLAX EFFECT MODULE
+// ============================================
+const ParallaxModule = (() => {
+  const init = () => {
+    const parallaxElements = document.querySelectorAll('.hero-image, .about-visual');
+    
+    if (parallaxElements.length === 0) return;
 
-    var checkVisibility = function() {
-      var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      items.forEach(function(el, i) {
-        if (revealed[i]) return;
-        var top = getOffsetTop(el);
-        if (scrollTop + windowHeight > top + 40) {
-          reveal(el);
-          revealed[i] = true;
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      
+      parallaxElements.forEach(element => {
+        const rect = element.getBoundingClientRect();
+        const speed = 0.3;
+        
+        // Only animate if element is in viewport
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          const yPos = -(scrolled * speed);
+          element.style.transform = `translateY(${yPos}px)`;
         }
       });
     };
 
-    window.addEventListener('scroll', checkVisibility, supportsPassive() ? { passive: true } : false);
-    checkVisibility();
-  }
-}
+    // Use requestAnimationFrame for better performance
+    let ticking = false;
+    const optimizedScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-/* =============================================
-   UTILITY: Passive event listener detection
-   ============================================= */
-function supportsPassive() {
-  var supported = false;
-  try {
-    var opts = Object.defineProperty({}, 'passive', {
-      get: function() { supported = true; return true; }
+    window.addEventListener('scroll', optimizedScroll, { passive: true });
+  };
+
+  return { init };
+});
+
+// ============================================
+// PROPERTY GALLERY MODULE
+// ============================================
+const PropertyGalleryModule = (() => {
+  let imageSets = {
+    1: [
+      'https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=1200&q=80'
+    ],
+    2: [
+      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80'
+    ],
+    3: [
+      'https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=1200&q=80'
+    ]
+  };
+
+  const initGallery = (gallery) => {
+    const galleryId = gallery.dataset.gallery;
+    const mainImage = gallery.querySelector('.gallery-main');
+    const thumbnails = gallery.querySelectorAll('.thumbnail');
+    const images = imageSets[galleryId] || [];
+
+    console.log('Gallery ID:', galleryId, 'Thumbnails:', thumbnails.length, 'Images:', images.length);
+
+    if (!mainImage) {
+      console.error('Main image not found for gallery:', galleryId);
+      return;
+    }
+
+    if (thumbnails.length === 0) {
+      console.error('No thumbnails found for gallery:', galleryId);
+      return;
+    }
+
+    thumbnails.forEach((thumb, index) => {
+      thumb.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('Thumbnail clicked:', index, 'Image:', images[index]);
+        
+        // Update active state
+        thumbnails.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+        
+        // Update main image with fade effect
+        mainImage.style.opacity = '0';
+        setTimeout(() => {
+          mainImage.style.backgroundImage = `url('${images[index]}')`;
+          mainImage.style.opacity = '1';
+        }, 150);
+      });
     });
-    window.addEventListener('testPassive', null, opts);
-    window.removeEventListener('testPassive', null, opts);
-  } catch (e) {}
-  return supported;
-}
+  };
+
+  const init = () => {
+    console.log('Initializing property galleries...');
+    const galleries = document.querySelectorAll('.property-gallery');
+    console.log('Galleries found:', galleries.length);
+    galleries.forEach(initGallery);
+    console.log('Property galleries initialized');
+  };
+
+  return { init, imageSets };
+})();
+
+// ============================================
+// PROPERTY MODAL MODULE
+// ============================================
+const PropertyModalModule = (() => {
+  let modal;
+  let closeButtons;
+  let detailsButtons;
+  
+  const propertyData = {
+    1: {
+      badge: 'Продажба',
+      title: 'Тристаен апартамент с модерен интериор',
+      location: 'Пловдив, централна градска част',
+      price: '€ 189,000',
+      details: [
+        { label: 'Площ', value: '96 кв.м' },
+        { label: 'Стаи', value: '3 стаи' },
+        { label: 'Етаж', value: '3/5' },
+        { label: 'Година', value: '2018' },
+        { label: 'Обзаведен', value: 'Да' },
+        { label: 'Асансьор', value: 'Да' }
+      ],
+      description: 'Луксозен тристаен апартамент в сърцето на Пловдив с модерен интериорен дизайн. Апартаментът предлага просторно дневно с кухненски бокс, две спални, баня с тоалетна и тераса с панорамна гледка към града. Напълно обзаведен с висококачествени мебели и техника.',
+      features: ['Централна климатизация', 'ПВЦ дограма', 'Подово отопление', 'Smart home система', 'Паркомясто', 'Складово помещение'],
+      gallery: []
+    },
+    2: {
+      badge: 'Къща',
+      title: 'Нова къща с двор и висока пазарна стойност',
+      location: 'Пловдив, южна зона',
+      price: '€ 315,000',
+      details: [
+        { label: 'Площ', value: '186 кв.м' },
+        { label: 'Спални', value: '4 спални' },
+        { label: 'Двор', value: '500 кв.м' },
+        { label: 'Година', value: '2020' },
+        { label: 'Гараж', value: '2 места' },
+        { label: 'Басейн', value: 'Да' }
+      ],
+      description: 'Ексклузивна нова къща в престижния южен район на Пловдив. Съвременна архитектура с четири спални, просторен хол с кухня, три бани, гараж за два автомобила и басейн в двора. Идеална за семейство, което търси комфорт и високо качество на живот.',
+      features: ['Слънчеви колектори', 'Алармена система', 'Видео наблюдение', 'Автоматично поливане', 'Барбекю зона', 'Оранжерия'],
+      gallery: []
+    },
+    3: {
+      badge: 'Инвестиция',
+      title: 'Парцел за жилищно строителство',
+      location: 'с. Белащица / район Пловдив',
+      price: '€ 92,500',
+      details: [
+        { label: 'Площ', value: '1000 кв.м' },
+        { label: 'Статус', value: 'УПИ' },
+        { label: 'Достъп', value: 'Асфалтиран' },
+        { label: 'Категория', value: 'Жилищен' },
+        { label: 'Ток', value: 'Да' },
+        { label: 'Вода', value: 'Да' }
+      ],
+      description: 'Парцел с отлична локация в с. Белащица, подходящ за жилищно строителство. Равен терен с всички необходими комуникации. Перспективна инвестиция с възможност за изграждане на еднофамилен дом или няколко къщи.',
+      features: ['Панорамна гледка', 'Близо до града', 'Тихо място', 'Регулация', 'Удобен достъп', 'Възможност за застрояване'],
+      gallery: []
+    }
+  };
+
+  const openModal = (propertyId) => {
+    const data = propertyData[propertyId];
+    if (!data) {
+      console.error('Property data not found:', propertyId);
+      return;
+    }
+
+    console.log('Opening modal for property:', propertyId);
+
+    // Populate modal content
+    const modalBadge = document.getElementById('modalBadge');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalLocation = document.getElementById('modalLocation');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalDetails = document.getElementById('modalDetails');
+    const modalFeatures = document.getElementById('modalFeatures');
+    const modalGallery = document.getElementById('modalGallery');
+
+    if (!modalBadge || !modalTitle || !modalLocation || !modalPrice || !modalDescription || !modalDetails || !modalFeatures || !modalGallery) {
+      console.error('Modal elements not found');
+      return;
+    }
+
+    modalBadge.textContent = data.badge;
+    modalTitle.textContent = data.title;
+    modalLocation.textContent = data.location;
+    modalPrice.textContent = data.price;
+    modalDescription.textContent = data.description;
+
+    // Populate details
+    modalDetails.innerHTML = data.details.map(detail => `
+      <div class="property-modal__detail-item">
+        <span class="property-modal__detail-label">${detail.label}</span>
+        <span class="property-modal__detail-value">${detail.value}</span>
+      </div>
+    `).join('');
+
+    // Populate features
+    modalFeatures.innerHTML = data.features.map(feature => `
+      <div class="property-modal__feature">
+        <span class="property-modal__feature-icon">✓</span>
+        <span>${feature}</span>
+      </div>
+    `).join('');
+
+    // Set gallery image (first one from PropertyGalleryModule)
+    const imageSets = PropertyGalleryModule.imageSets || {};
+    const images = imageSets[propertyId] || [];
+    if (images.length > 0) {
+      modalGallery.style.backgroundImage = `url('${images[0]}')`;
+    }
+
+    // Show modal
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  const init = () => {
+    console.log('Initializing property modal...');
+    
+    modal = document.getElementById('propertyModal');
+    closeButtons = document.querySelectorAll('[data-modal-close]');
+    detailsButtons = document.querySelectorAll('.property-details-btn');
+    
+    console.log('Modal element:', modal);
+    console.log('Details buttons found:', detailsButtons.length);
+    console.log('Close buttons found:', closeButtons.length);
+    
+    if (!modal) {
+      console.error('Modal element not found');
+      return;
+    }
+
+    if (detailsButtons.length === 0) {
+      console.error('No details buttons found!');
+      // Try alternative selector
+      const allButtons = document.querySelectorAll('button');
+      console.log('All buttons on page:', allButtons.length);
+      allButtons.forEach((btn, i) => {
+        console.log(`Button ${i}:`, btn.className, btn.textContent, btn.dataset);
+      });
+      return;
+    }
+
+    // Details buttons
+    detailsButtons.forEach((btn, index) => {
+      console.log(`Details button ${index}:`, btn.className, btn.dataset.property);
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const propertyId = btn.dataset.property;
+        console.log('Details button clicked for property:', propertyId);
+        openModal(propertyId);
+      });
+    });
+
+    // Close buttons
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal();
+      });
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+
+    // Close on overlay click
+    const overlay = modal.querySelector('.property-modal__overlay');
+    if (overlay) {
+      overlay.addEventListener('click', closeModal);
+    }
+    
+    console.log('Property modal initialized successfully');
+  };
+
+  return { init };
+})();
+
+// ============================================
+// LAZY LOADING MODULE
+// ============================================
+const LazyLoadModule = (() => {
+  const init = () => {
+    // Add lazy loading to images that don't have it
+    const images = document.querySelectorAll('img:not([loading])');
+    images.forEach(img => {
+      img.setAttribute('loading', 'lazy');
+    });
+  };
+
+  return { init };
+});
+
+// ============================================
+// INITIALIZATION
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    ThemeModule.init();
+    MobileMenuModule.init();
+    ScrollAnimationsModule.init();
+    ContactFormModule.init();
+    SmoothScrollModule.init();
+    CountersModule.init();
+    ScrollProgressModule.init();
+    BackToTopModule.init();
+    // ParallaxModule.init(); // Temporarily disabled
+    PropertyGalleryModule.init();
+    PropertyModalModule.init();
+    LazyLoadModule.init();
+    
+    console.log('Estate Atelier initialized successfully');
+  } catch (error) {
+    console.error('Initialization error:', error);
+  }
+});
+
+// ============================================
+// ERROR HANDLING
+// ============================================
+window.addEventListener('error', (e) => {
+  console.error('Global error:', e.error);
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('Unhandled promise rejection:', e.reason);
+});
