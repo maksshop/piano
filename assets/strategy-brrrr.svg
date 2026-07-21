@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="Плейсхолдър: BRRRR · РАСТЕЖ НА ПОРТФОЛИО">
+  <rect width="560" height="420" fill="#EFEAE1"></rect>
+  <g stroke="#173A2E" stroke-width="2" fill="none" opacity="0.5">
+  <rect x="130" y="150" width="90" height="180"></rect><rect x="235" y="120" width="90" height="210"></rect><rect x="340" y="170" width="90" height="160"></rect>
+  <path d="M430 110 a70 70 0 1 1 -20 -30" stroke="#A87D34"></path>
+  <path d="M405 70 L418 82 L400 92" fill="#A87D34" stroke="#A87D34"></path>
+</g>
+  
+  <g opacity="0.8">
+    <rect x="210" y="382" width="140" height="20" rx="10" fill="#F7F4EF" opacity="0.7"></rect>
+    <text x="280" y="396" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" letter-spacing="1.4" fill="#6E7269">BRRRR · РАСТЕЖ НА ПОРТФОЛИО</text>
+  </g>
+</svg>

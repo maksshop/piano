@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" width="640" height="800" role="img" aria-label="Плейсхолдър: съвременна сграда">
+  <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#EFEAE1"></stop><stop offset="1" stop-color="#E3DDD2"></stop>
+  </linearGradient></defs>
+  <rect width="640" height="800" fill="url(#hg)"></rect>
+  <circle cx="500" cy="150" r="60" fill="#A87D34" opacity="0.18"></circle>
+  <g stroke="#173A2E" stroke-width="2" fill="none" opacity="0.55">
+    <rect x="120" y="180" width="300" height="520"></rect>
+    <rect x="420" y="300" width="150" height="400"></rect>
+    <line x1="120" y1="180" x2="270" y2="120"></line><line x1="420" y1="180" x2="270" y2="120"></line>
+    <line x1="120" y1="180" x2="420" y2="180"></line>
+  </g>
+  <g fill="#173A2E" opacity="0.14">
+    <rect x="150" y="210" width="42" height="52"></rect><rect x="216" y="210" width="42" height="52"></rect><rect x="282" y="210" width="42" height="52"></rect><rect x="348" y="210" width="42" height="52"></rect><rect x="150" y="288" width="42" height="52"></rect><rect x="216" y="288" width="42" height="52"></rect><rect x="282" y="288" width="42" height="52"></rect><rect x="348" y="288" width="42" height="52"></rect><rect x="150" y="366" width="42" height="52"></rect><rect x="216" y="366" width="42" height="52"></rect><rect x="282" y="366" width="42" height="52"></rect><rect x="348" y="366" width="42" height="52"></rect><rect x="150" y="444" width="42" height="52"></rect><rect x="216" y="444" width="42" height="52"></rect><rect x="282" y="444" width="42" height="52"></rect><rect x="348" y="444" width="42" height="52"></rect><rect x="150" y="522" width="42" height="52"></rect><rect x="216" y="522" width="42" height="52"></rect><rect x="282" y="522" width="42" height="52"></rect><rect x="348" y="522" width="42" height="52"></rect><rect x="150" y="600" width="42" height="52"></rect><rect x="216" y="600" width="42" height="52"></rect><rect x="282" y="600" width="42" height="52"></rect><rect x="348" y="600" width="42" height="52"></rect>
+    <rect x="450" y="330" width="90" height="46"></rect><rect x="450" y="402" width="90" height="46"></rect><rect x="450" y="474" width="90" height="46"></rect><rect x="450" y="546" width="90" height="46"></rect><rect x="450" y="618" width="90" height="46"></rect>
+  </g>
+  
+  <g opacity="0.8">
+    <rect x="250" y="762" width="140" height="20" rx="10" fill="#F7F4EF" opacity="0.7"></rect>
+    <text x="320" y="776" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" letter-spacing="1.4" fill="#6E7269">ЗАМЕНЕТЕ СЪС СНИМКА</text>
+  </g>
+</svg>

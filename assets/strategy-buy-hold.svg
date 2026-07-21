@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="Плейсхолдър: КУПИ И ОТДАВАЙ">
+  <rect width="560" height="420" fill="#EFEAE1"></rect>
+  <g stroke="#173A2E" stroke-width="2" fill="none" opacity="0.5">
+  <rect x="150" y="90" width="260" height="240"></rect>
+  <rect x="175" y="115" width="38" height="44"></rect><rect x="233" y="115" width="38" height="44"></rect><rect x="291" y="115" width="38" height="44"></rect><rect x="349" y="115" width="38" height="44"></rect><rect x="175" y="181" width="38" height="44"></rect><rect x="233" y="181" width="38" height="44"></rect><rect x="291" y="181" width="38" height="44"></rect><rect x="349" y="181" width="38" height="44"></rect><rect x="175" y="247" width="38" height="44"></rect><rect x="233" y="247" width="38" height="44"></rect><rect x="291" y="247" width="38" height="44"></rect><rect x="349" y="247" width="38" height="44"></rect>
+</g>
+  
+  <g opacity="0.8">
+    <rect x="210" y="382" width="140" height="20" rx="10" fill="#F7F4EF" opacity="0.7"></rect>
+    <text x="280" y="396" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" letter-spacing="1.4" fill="#6E7269">КУПИ И ОТДАВАЙ</text>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 480" width="360" height="480" role="img" aria-label="Корица на наръчника">
+  <rect width="360" height="480" fill="#173A2E"></rect>
+  <rect x="0" y="0" width="10" height="480" fill="#A87D34"></rect>
+  <text x="42" y="90" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="3" fill="#A87D34">БЕЗПЛАТЕН НАРЪЧНИК</text>
+  <text x="42" y="180" font-family="Georgia, serif" font-size="88" font-weight="700" fill="#F7F4EF">7</text>
+  <text x="42" y="230" font-family="Georgia, serif" font-size="30" font-weight="600" fill="#F7F4EF">грешки на</text>
+  <text x="42" y="268" font-family="Georgia, serif" font-size="30" font-weight="600" fill="#F7F4EF">начинаещия</text>
+  <text x="42" y="306" font-family="Georgia, serif" font-size="30" font-weight="600" fill="#F7F4EF">инвеститор</text>
+  <line x1="42" y1="340" x2="150" y2="340" stroke="#A87D34" stroke-width="2"></line>
+  <text x="42" y="378" font-family="Arial, sans-serif" font-size="13" fill="#8CA091">в имоти — за българския пазар</text>
+</svg>
